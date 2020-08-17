@@ -20,8 +20,8 @@ Route::group(['prefix' => 'admin'], function() {
 });
 
 Route::group(['prefix' => 'admin'], function() {
-    Route::get('profile/create', 'Admin\PlofileController@add');
-    Route::get('profile/edit', 'Admin\PlofileController@edit');
+    Route::get('profile/create', 'Admin\PlofileController@add')->middleware('auth');
+    Route::get('profile/edit', 'Admin\PlofileController@edit')->middleware('auth');
 });
 
 /*
