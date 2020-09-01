@@ -5,7 +5,7 @@ namespace App\Http\Controllers\Admin;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 
-use App\Profiles;
+use App\Profile;
 use App\ProfileHistory;
 
 use Carbon\Carbon;
@@ -20,9 +20,9 @@ class ProfileController extends Controller
     public function create(Request $request)
     {
        // Varidationを行う
-      $this->validate($request, Profiles::$rules);
+      $this->validate($request, Profile::$rules);
 
-      $profile = new Profiles;
+      $profile = new Profile;
       $form = $request->all();
 
 
@@ -39,7 +39,7 @@ class ProfileController extends Controller
     public function edit(Request $request)
     {
         // Profiles Modelからデータを取得する
-      $profile = Profiles::find($request->id);
+      $profile = Profile::find($request->id);
       if (empty($profile)) {
         abort(404);    
       }
@@ -51,9 +51,9 @@ class ProfileController extends Controller
     public function update(Request $request)
   {
       // Validationをかける
-      $this->validate($request, Profiles::$rules);
+      $this->validate($request, Profile::$rules);
       // News Modelからデータを取得する
-      $profile = Profiles::find($request->id);
+      $profile = Profile::find($request->id);
       // 送信されてきたフォームデータを格納する
       $profile_form = $request->all();
       
